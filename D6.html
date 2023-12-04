@@ -41,7 +41,7 @@
 
   <body>
     <div>
-      <h1>Questo è il titolo della pagina</h1>
+      <h1 onclick="makeItClickable">Questo è il titolo della pagina</h1>
       <h2>Questo è il sottotitolo della pagina</h2>
     </div>
 
@@ -78,7 +78,7 @@
 
     <div id="tableArea"></div>
 
-    <footer>
+    <footer onclick="revealFooterLink()">
       <h3>
         DOM Manipulation is super
         <a
@@ -102,11 +102,11 @@
          Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
       */
 
-      // const addClassToTitle = function () {
-      //   const classTitle = document.querySelectorAll("div h1")[0];
-      //   classTitle.classlist.add("myHeading");
-      // };
-      // addClassToTitle();
+      const addClassToTitle = function () {
+        const classTitle = document.querySelector("h1");
+        classTitle.classList.add("myHeading");
+      };
+      addClassToTitle();
 
       /* ESERCIZIO 3
          Scrivi una funzione che cambi il testo dei p figli di un div
@@ -134,14 +134,13 @@
          Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
       */
 
-      // const addToTheSecond = function addElement() {
-      //   const newList = document.createElement("li");
-      //   const newContent = document.createTextNode("New list");
-      //   newList.appendChild(newContent);
-      //   const currentList = document.getElementById("secondList");
-      //   document.body.insertBefore(newList, currentList);
-      // };
-      // addToTheSecond();
+      const addToTheSecond = function addElement() {
+        const newList = document.createElement("li");
+        newList.innerTexr = "4th";
+        const secondUl = document.getElementById("secondList");
+        secondUl.appendChild(newList);
+      };
+      addToTheSecond();
 
       /* ESERCIZIO 6
          Scrivi una funzione che aggiunga un paragrafo al primo div
@@ -170,23 +169,33 @@
          Scrivi una funzione che renda verde il background di ogni lista non ordinata
         */
 
-      // const paintItGreen = function () {
-      //   const uListElement = document.querySelectorAll("ul");
-      //   uListElement.classList.add("green");
-      // };
-      // paintItGreen();
+      const paintItGreen = function () {
+        const uListElement = document.querySelectorAll("ul");
+        for (let i = 0; i < uListElement.length; i++) {
+          uListElement[i].style.backgroundColor = "green";
+        }
+      };
+      paintItGreen();
 
       /* ESERCIZIO 9
          Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
         */
 
-      const makeItClickable = function () {};
+      const makeItClickable = function () {
+        const myH1 = document.getElementsByTagName("h1")[0];
+        myH1.innerText = myH1.innertext.slice(0, myH1.innerText.length - 1);
+      };
 
       /* ESERCIZIO 10
          Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
         */
 
-      const revealFooterLink = function () {};
+      const revealFooterLink = function () {
+        const anchorInsideFooter = document.querySelector("footer a");
+        const anchorInsideFooterLink = anchorInsideFooter.getAttribute("href");
+        alert(anchorInsideFooterLink);
+      };
+      revealFooterLink();
 
       /* ESERCIZIO 11
          Crea una funzione che crei una tabella nell'elemento con id "tableArea".
